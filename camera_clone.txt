@@ -15,3 +15,9 @@ QT_PLUGIN_PATH /home/anti/Qt/5.13.2/gcc_64/plugins/
 QT_QPA_PLATFORM_PLUGIN_PATH /home/anti/Qt/5.13.2/gcc_64/plugins/platforms
 
 scp pi@172.16.3.125:/etc/hosts /home/anti/camera_clone/
+
+From server to local machine:
+
+ssh user@server "sudo cat /etc/dir/file" > /home/user/file
+From local machine to server:
+
