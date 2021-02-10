@@ -5,6 +5,7 @@
 	wpasupplicant
 	dhcpcd.conf
 	rc.local
+	/home
 	---
 	program
 	common
