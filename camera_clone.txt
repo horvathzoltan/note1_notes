@@ -5,7 +5,7 @@
 	wpasupplicant
 	dhcpcd.conf
 	rc.local
-	/home
+	/home/pi/.bashrc
 	---
 	program
 	common
