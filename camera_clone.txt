@@ -20,5 +20,11 @@ scp pi@172.16.3.125:/etc/hosts /home/anti/camera_clone/
 From server to local machine:
 
 ssh user@server "sudo cat /etc/dir/file" > /home/user/file
+
 From local machine to server:
 
+cat /home/user/file | ssh user@server "sudo tee -a /etc/dir/file"
+
+
+
+ssh user@remote "sudo scp -r user@local:/path/to/files /opt/bin"
