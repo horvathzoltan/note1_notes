@@ -1,0 +1,11 @@
+﻿1. dd img -> SD kártya
+2. mount
+3. felülír:
+	hosts
+	wpasupplicant
+	dhcpcd.conf
+	rc.local
+	---
+	program
+	common
+
