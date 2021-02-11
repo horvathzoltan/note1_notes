@@ -1,12 +1,12 @@
 ﻿1. dd img -> SD kártya
 2. mount
 3. felülír:
-	hosts
-	wpasupplicant
+	/etc/hosts
+	/etc/wpasupplicant/wpasupplicant.conf
 	dhcpcd.conf
 	rc.local
 	/home/pi/.bashrc
-
+	/etc/fstab
 	---
 	program
 	common
