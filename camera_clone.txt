@@ -47,3 +47,6 @@ if [ -f "$SRCFILE" ]; then
 cp $SRCFILE $UPDIR_DST
 fi
 umount /mnt/shared
+
+findmnt %1 -r
+%1 //%2/shared cifs
