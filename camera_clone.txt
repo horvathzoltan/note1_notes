@@ -6,6 +6,7 @@
 	dhcpcd.conf
 	rc.local
 	/home/pi/.bashrc
+
 	---
 	program
 	common
@@ -31,3 +32,5 @@ ssh user@remote "sudo scp -r user@local:/path/to/files /opt/bin"
 
 MSSQL
 https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility?view=sql-server-ver15
+
+
