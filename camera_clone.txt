@@ -34,3 +34,16 @@ MSSQL
 https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility?view=sql-server-ver15
 
 
+mount /mnt/shared
+UPDIR_SRC=/mnt/shared/CameraUpgrades
+UPDIR_DST=/home/pi
+
+ls $UPDIR_SRC > $UPDIR_DST/uptest.txt
+
+FILE=valami.txt
+SRCFILE=FILE=$UPDIR_SRC/$FILE
+
+if [ -f "$SRCFILE" ]; then
+cp $SRCFILE $UPDIR_DST
+fi
+umount /mnt/shared
