@@ -50,3 +50,26 @@ umount /mnt/shared
 
 findmnt %1 -r
 %1 //%2/shared cifs
+
+
+root@zoliPC:/media/anti/rootfs/home/pi# cat mcpapi.service 
+[Unit]
+Description=starts api after networking starts
+Wants=network-online.target
+After=network-online.target
+Requires=systemd-modules-load.service
+After=systemd-modules-load.service
+ConditionalPathExit=/sys/class/spidev
+
+
+[Service]
+Type=simple
+WorkingDirectory=/home/pi
+ExecStart=/home/pi/pizero_mcp3008_api/bin/pizero_mcp3008_api &
+
+[Install]
+WantedBy=multi-user.target
+root@zoliPC:/media/anti/rootfs/home/pi# 
+
+
+
