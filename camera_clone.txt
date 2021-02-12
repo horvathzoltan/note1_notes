@@ -104,23 +104,30 @@ fi
 
 https://www.raspberrypi.org/documentation/linux/usage/systemd.md
 
+pi@raspberrypi:~ $ sudo systemctl start cameraapi.service
+pi@raspberrypi:~ $ sudo systemctl stop cameraapi.service
+pi@raspberrypi:~ $ sudo systemctl enable cameraapi.service
+
+****
+pi@raspberrypi:~ $ cat cameraapi.service 
+
 [Unit]
-Description=starts api after networking starts
-Wants=network-online.target
-After=network-online.target
+Description=starts api after boot
+#Wants=network-online.target
+#After=network-online.target
 Requires=systemd-modules-load.service
 After=systemd-modules-load.service
-ConditionalPathExit=/sys/class/spidev
+#ConditionalPathExit=/sys/class/spidev
 
 
 [Service]
 Type=simple
 WorkingDirectory=/home/pi
-ExecStart=/home/pi/pizero_mcp3008_api/bin/pizero_mcp3008_api &
+ExecStart=/home/pi/run &
 
 [Install]
 WantedBy=multi-user.target
-root@zoliPC:/media/anti/rootfs/home/pi# 
+
 
 
 
