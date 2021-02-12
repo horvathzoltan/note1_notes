@@ -51,6 +51,9 @@ umount /mnt/shared
 findmnt %1 -r
 %1 //%2/shared cifs
 
+sudo cp myscript.service /etc/systemd/system/myscript.service
+
+
 
 root@zoliPC:/media/anti/rootfs/home/pi# cat mcpapi.service 
 [Unit]
