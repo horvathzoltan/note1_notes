@@ -34,28 +34,76 @@ MSSQL
 https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility?view=sql-server-ver15
 
 
-mount /mnt/shared
+
+#!/bin/bash
+
+echo "purutty">>/home/pi/purutty.txt
+
+#until ping -nq -c3 cpu; do
+   # Waiting for network
+#   sleep 5
+#done
+#mount -a
+#findmnt /mnt/shared -r > /dev/null
+#ISMOUNTED=$?
+
+#if [ $ISMOUNTED -eq 1 ]; then
+#    echo "mounting">>/home/pi/purutty.txt
+    mount /mnt/shared
+#else
+#    echo "mounted">>/home/pi/purutty.txt
+#fi
+
+#if [ $ISMOUNTED -eq 1 ]; then
+#    echo "not mounted">>/home/pi/purutty.txt
+#else
+#    echo "mounted">>/home/pi/purutty.txt
+#fi
+
+#mount -a
+
 UPDIR_SRC=/mnt/shared/CameraUpgrades
 UPDIR_DST=/home/pi
 
-ls $UPDIR_SRC > $UPDIR_DST/uptest.txt
+#ls $UPDIR_SRC > $UPDIR_DST/uptest.txt
+ls /mnt/shared -lrt >> /home/pi/purutty.txt
 
-FILE=valami.txt
-SRCFILE=FILE=$UPDIR_SRC/$FILE
+SRCFN=$(ls $UPDIR_SRC/valami*.txt -1tr | tail -1 | sed -r 's:.*/::;s/_[^_]*$//;q' )
 
-if [ -f "$SRCFILE" ]; then
-cp $SRCFILE $UPDIR_DST
+SRCFILEPATH=$UPDIR_SRC/$SRCFN
+
+if [ -f "$SRCFILEPATH" ]; then
+    echo "upgrading">>/home/pi/purutty.txt
+    echo "Updating: $SRCFILEPATH"
+    FILE=valami.txt
+    #SRCFILE=$UPDIR_SRC/$FILE
+    DESTFILE=$UPDIR_DST/$SRCFN
+    LNK=$UPDIR_DST/run
+
+    if [ -f "$DESTFILE" ]; then
+	echo "exist"
+    else
+        echo "upgrading"
+	#mv $DESTFILE ${DESTFILE}_old amire a run mutat az lesz az old
+        cp $SRCFILEPATH $DESTFILE
+
+	if [ -e $LNK ]; then
+    	    rm $LNK
+	fi
+	ln -s $DESTFILE $LNK        
+    fi
+else
+    echo "no srcfilepath:$SRCFILEPATH">>/home/pi/purutty.txt
 fi
+
+if [ $ISMOUNTED -eq 1 ]; then
 umount /mnt/shared
+fi
 
-findmnt %1 -r
-%1 //%2/shared cifs
+*******
 
-sudo cp myscript.service /etc/systemd/system/myscript.service
+https://www.raspberrypi.org/documentation/linux/usage/systemd.md
 
-
-
-root@zoliPC:/media/anti/rootfs/home/pi# cat mcpapi.service 
 [Unit]
 Description=starts api after networking starts
 Wants=network-online.target
