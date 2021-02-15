@@ -130,6 +130,11 @@ ExecStart=/home/pi/run &
 [Install]
 WantedBy=multi-user.target
 
+*****
+https://stackoverflow.com/questions/5129788/how-to-restart-my-own-qt-application
+
+
+
 
 
 
