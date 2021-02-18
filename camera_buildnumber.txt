@@ -1,0 +1,14 @@
+﻿#!/bin/bash
+
+LD_LIBRARY_PATH=~/commonlib_debug_64 QT_PLUGIN_PATH=~/Qt/5.13.2/gcc_64/plugins/ ~/buildnumber > buildnumber.txt
+
+BN=$(cat buildnumber.txt)
+echo "#ifndef BUILDNUMBER_H
+#define BUILDNUMBER_H
+
+#define BUILDNUMBER ${BN}
+
+#include <QString>
+static const QString buildnumber22 = QString::number(BUILDNUMBER);
+
+#endif // BUILDNUMBER_H" > ~/camera2/buildnumber.h
