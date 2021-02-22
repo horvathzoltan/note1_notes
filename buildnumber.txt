@@ -1,4 +1,18 @@
 ﻿1. Add New > C++ Class > buildnumber
 2. Projects>Run>Build Steps
+
+*** új buildszám generálása
 +
-Commab/home/anti/camera_buildnumber.sh
+Command: /home/anti/camera_buildnumber.sh
+Working dir: %{buildDir}
+
+*** legyen a legfelső
+
+***
+
+*** frissen muilde
++
+/home/anti/updcam.sh
+%{buildDir}
+
+*** legyen az utolsó
