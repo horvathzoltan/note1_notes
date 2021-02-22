@@ -10,7 +10,7 @@ Working dir: %{buildDir}
 
 ***
 
-*** frissen muilde
+*** frissen buildelt bináris legyen a frissítésbe másolva név+buildszám
 +
 /home/anti/updcam.sh
 %{buildDir}
